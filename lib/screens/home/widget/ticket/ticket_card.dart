@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 
-import '../text/text_style_fourth.dart';
-import '../text/text_style_third.dart';
+import '../../../../base/widgets/text/text_style_fourth.dart';
+import '../../../../base/widgets/text/text_style_third.dart';
 import 'app_layoutbuilder_widget.dart';
 import 'big_circle.dart';
 import 'big_dot.dart';
 
 class TicketCard extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketCard({super.key, required this.ticket});
+  final bool isFullSize;
+  const TicketCard({super.key, required this.ticket, this.isFullSize = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +19,9 @@ class TicketCard extends StatelessWidget {
       width: size.width * 0.85,
       height: 189,
       child: Container(
-        margin: const EdgeInsets.only(right: 16),
-        padding: const EdgeInsets.only(right: 16),
-        // color: Colors.red,
+        margin: EdgeInsets.only(right: isFullSize ? 0 : 16),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             // blue part
             Container(

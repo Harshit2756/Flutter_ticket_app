@@ -4,11 +4,12 @@ import '../res/styles/app_styles.dart';
 
 class SectionHeading extends StatelessWidget {
   final String title, actionText;
-
+  final void Function()? onTap;
   const SectionHeading({
     super.key,
-    required this.title,
     this.actionText = "View all",
+    this.onTap,
+    required this.title,
   });
 
   @override
@@ -21,7 +22,7 @@ class SectionHeading extends StatelessWidget {
           style: AppStyles.headLineStyle2,
         ),
         InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Text(
             actionText,
             style: AppStyles.textStyle.copyWith(

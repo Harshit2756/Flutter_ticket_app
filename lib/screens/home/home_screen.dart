@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/app_json.dart';
+import 'package:ticket_app/screens/home/widget/hotel/hotel_card.dart';
 import 'package:ticket_app/base/widgets/section_heading.dart';
 
-import '../base/widgets/ticket/ticket_card.dart';
+import '../../base/res/routes/routes_name.dart';
+import 'widget/ticket/ticket_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -69,16 +71,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                const SectionHeading(title: "Upcoming Flights"),
+                SectionHeading(
+                  title: "Upcoming Flights",
+                  onTap: () =>
+                      Navigator.pushNamed(context, RoutesName.allTickets),
+                ),
                 const SizedBox(height: 20),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: ticketList
                         .take(3)
-                        .map(
-                          (ticket) => TicketCard(ticket: ticket),
-                        )
+                        .map((ticket) => TicketCard(ticket: ticket))
+                        .toList(),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                SectionHeading(
+                    title: "Hotels",
+                    onTap: () =>
+                        Navigator.pushNamed(context, RoutesName.allHotels)),
+                const SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: hotelList
+                        .take(3)
+                        .map((hotel) => HotelCard(hotel: hotel))
                         .toList(),
                   ),
                 ),
