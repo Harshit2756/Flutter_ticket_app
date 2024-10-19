@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/res/Theme/app_styles.dart';
+import 'package:ticket_app/base/res/Theme/colors.dart';
 
 class HotelCard extends StatelessWidget {
   final Map<String, dynamic> hotel;
@@ -15,7 +16,7 @@ class HotelCard extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         margin: const EdgeInsets.only(right: 17),
         decoration: BoxDecoration(
-          color: AppStyles.primaryColor,
+          color: HColors.primaryColor,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
@@ -37,21 +38,21 @@ class HotelCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               hotel['place'],
-              style: AppStyles.headLineStyle2.copyWith(
+              style: HStyles.headLineStyle2.copyWith(
                 color: Colors.white,
               ),
             ),
             const SizedBox(height: 5),
             Text(
               hotel['destination'],
-              style: AppStyles.headLineStyle3.copyWith(
+              style: HStyles.headLineStyle3.copyWith(
                 color: Colors.white,
               ),
             ),
             const SizedBox(height: 5),
             Text(
               '\$${hotel['price']} / night',
-              style: AppStyles.headLineStyle2.copyWith(
+              style: HStyles.headLineStyle2.copyWith(
                 color: Colors.white,
               ),
             ),

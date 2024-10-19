@@ -1,6 +1,9 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/base/res/Theme/colors.dart';
+import 'package:ticket_app/base/utils/Constants/icons.dart';
 import 'package:ticket_app/screens/home/home_screen.dart';
+
+import '../screens/search/search_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -12,7 +15,7 @@ class BottomNavBar extends StatefulWidget {
 class BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const HomeScreen(),
-    const Text('Search'),
+    const SearchScreen(),
     const Text('Ticket'),
     const Text('Profile'),
   ];
@@ -31,29 +34,29 @@ class BottomNavBarState extends State<BottomNavBar> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.blueGrey,
-        unselectedItemColor: const Color(0xff636400),
+        unselectedItemColor: HColors.selectedIconColor,
         showSelectedLabels: false,
         onTap: _onItemTapped,
         currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+            icon: Icon(HIcons.homeIconRegular),
+            activeIcon: Icon(HIcons.homeIconFilled),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+            icon: Icon(HIcons.searchIconRegular),
+            activeIcon: Icon(HIcons.searchIconFilled),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
+            icon: Icon(HIcons.ticketIconRegular),
+            activeIcon: Icon(HIcons.ticketIconFilled),
             label: 'Ticket',
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+            icon: Icon(HIcons.personIconRegular),
+            activeIcon: Icon(HIcons.personIconFilled),
             label: 'Profile',
           ),
         ],

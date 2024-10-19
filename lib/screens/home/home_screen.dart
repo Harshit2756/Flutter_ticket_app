@@ -1,10 +1,11 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:ticket_app/base/res/media.dart';
-import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/res/Theme/app_styles.dart';
+import 'package:ticket_app/base/res/Theme/colors.dart';
+import 'package:ticket_app/base/utils/Constants/icons.dart';
 import 'package:ticket_app/base/utils/app_json.dart';
-import 'package:ticket_app/screens/home/widget/hotel/hotel_card.dart';
+import 'package:ticket_app/base/utils/constants/images.dart';
 import 'package:ticket_app/base/widgets/section_heading.dart';
+import 'package:ticket_app/screens/home/widget/hotel/hotel_card.dart';
 
 import '../../base/res/routes/routes_name.dart';
 import 'widget/ticket/ticket_card.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyles.backgroundColor,
+      backgroundColor: HColors.backgroundColor,
       body: ListView(
         children: [
           const SizedBox(height: 40),
@@ -34,9 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Good morning", style: AppStyles.headLineStyle3),
+                        Text("Good morning", style: HStyles.headLineStyle3),
                         const SizedBox(height: 5),
-                        Text("Book Tickets", style: AppStyles.headLineStyle1),
+                        Text("Book Tickets", style: HStyles.headLineStyle1),
                       ],
                     ),
                     Container(
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage(AppMedia.logo),
+                          image: AssetImage(HImages.logo),
                         ),
                       ),
                     )
@@ -63,8 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Row(
                     children: [
                       Icon(
-                        FluentSystemIcons.ic_fluent_search_regular,
-                        color: Color(0xffbfc205),
+                        HIcons.searchIconRegular,
+                        color: HColors.searchIconColor,
                       ),
                       Text("Search"),
                     ],

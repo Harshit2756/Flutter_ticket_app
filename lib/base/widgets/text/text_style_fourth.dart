@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../res/styles/app_styles.dart';
+import '../../res/Theme/app_styles.dart';
 
 class TextStyleFourth extends StatelessWidget {
   final String text;
@@ -16,7 +16,7 @@ class TextStyleFourth extends StatelessWidget {
     return Text(
       textAlign: textAlign,
       text,
-      style: AppStyles.headLineStyle4.copyWith(color: Colors.white),
+      style: HStyles.headLineStyle4.copyWith(color: Colors.white),
     );
   }
 }

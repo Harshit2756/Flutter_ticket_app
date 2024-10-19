@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_app/base/res/Theme/colors.dart';
 
-import '../res/styles/app_styles.dart';
+import '../res/Theme/app_styles.dart';
 
 class SectionHeading extends StatelessWidget {
   final String title, actionText;
@@ -19,14 +20,14 @@ class SectionHeading extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.headLineStyle2,
+          style: HStyles.headLineStyle2,
         ),
         InkWell(
           onTap: onTap,
           child: Text(
             actionText,
-            style: AppStyles.textStyle.copyWith(
-              color: AppStyles.primaryColor,
+            style: HStyles.textStyle.copyWith(
+              color: HColors.primaryColor,
             ),
           ),
         ),

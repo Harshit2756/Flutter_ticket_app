@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/res/Theme/colors.dart';
 
 import '../../../../base/widgets/text/text_style_fourth.dart';
 import '../../../../base/widgets/text/text_style_third.dart';
@@ -26,9 +26,9 @@ class TicketCard extends StatelessWidget {
             // blue part
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppStyles.ticketBlue,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: HColors.ticketBlue,
+                borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(21),
                     topRight: Radius.circular(21)),
               ),
@@ -89,7 +89,7 @@ class TicketCard extends StatelessWidget {
             ),
             // lines
             Container(
-              color: AppStyles.ticketOrange,
+              color: HColors.ticketOrange,
               child: const Row(
                 children: [
                   BigCirlce(),
@@ -102,9 +102,9 @@ class TicketCard extends StatelessWidget {
             // orange part
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppStyles.ticketOrange,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: HColors.ticketOrange,
+                borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(21),
                     bottomRight: Radius.circular(21)),
               ),
