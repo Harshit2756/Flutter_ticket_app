@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/Theme/colors.dart';
 import 'package:ticket_app/base/utils/Constants/icons.dart';
 import 'package:ticket_app/screens/home/home_screen.dart';
+import 'package:ticket_app/screens/ticket/ticket_screen.dart';
 
 import '../screens/search/search_screen.dart';
 
@@ -16,16 +17,10 @@ class BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const HomeScreen(),
     const SearchScreen(),
-    const Text('Ticket'),
+    const TicketScreen(),
     const Text('Profile'),
   ];
   int _currentIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,5 +57,11 @@ class BottomNavBarState extends State<BottomNavBar> {
         ],
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }

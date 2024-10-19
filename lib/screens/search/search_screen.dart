@@ -24,7 +24,7 @@ class SearchScreen extends StatelessWidget {
             style: HStyles.headLineStyle1.copyWith(fontSize: 35),
           ),
           const SizedBox(height: 20),
-          const AppTicketTabs(),
+          const AppTicketTabs(tabs: ["Airline Tickets", "Hotels"]),
           const SizedBox(height: 20),
           TextFormField(
             decoration: InputDecoration(

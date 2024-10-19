@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'app_tab.dart';
 
 class AppTicketTabs extends StatelessWidget {
-  const AppTicketTabs({super.key});
+  final List<String> tabs;
+  const AppTicketTabs({super.key, required this.tabs});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +13,10 @@ class AppTicketTabs extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         color: const Color(0xfff4f6fd),
       ),
-      child: const Row(
+      child: Row(
         children: [
-          AppTabs(title: "Airline Tickets", isBorder: true, isSelected: true),
-          AppTabs(title: "Hotels"),
+          AppTabs(title: tabs[0], isBorder: true, isSelected: true),
+          AppTabs(title: tabs[1]),
         ],
       ),
     );

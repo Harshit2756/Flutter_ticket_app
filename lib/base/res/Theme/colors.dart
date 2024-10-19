@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HColors {
   static const Color primaryColor = Color(0xff687daf);
 
-  static const Color backgroundColor = Color(0xFFE9E7EC);
+  static const Color backgroundColor = Color(0xFFE9E8EF);
   static const Color textColor = Color(0xff3b3b3b);
   static const Color ticketBlue = Color(0xFF526799);
   static const Color ticketOrange = Color(0xFFF37B67);
