@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/screens/home/widget/ticket/ticket_card.dart';
 
+import '../../base/res/routes/routes_name.dart';
 import '../../base/utils/app_json.dart';
 
 class AllTickets extends StatelessWidget {
@@ -18,7 +19,15 @@ class AllTickets extends StatelessWidget {
               (ticket) => Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: TicketCard(ticket: ticket, isFullSize: true),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context,
+                        arguments: {"ticket": ticket},
+                        RoutesName.ticketScreen);
+                  },
+                  child: TicketCard(ticket: ticket, isFullSize: true),
+                ),
               ),
             )
             .toList(),

@@ -4,29 +4,39 @@ import 'package:ticket_app/base/utils/constants/images.dart';
 import 'package:ticket_app/screens/home/widget/ticket/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/screens/home/widget/ticket/ticket_card.dart';
 
-import '../../base/res/Theme/app_styles.dart';
 import '../../base/res/Theme/colors.dart';
 import '../../base/utils/app_json.dart';
 import '../../base/widgets/text/text_style_fourth.dart';
 import '../../base/widgets/text/text_style_third.dart';
 import '../search/widgets/app_ticket_tabs.dart';
 
-class TicketScreen extends StatelessWidget {
-  const TicketScreen({super.key});
+class TicketScreen extends StatefulWidget {
+  final Map<String, dynamic>? ticket;
 
+  const TicketScreen({super.key, this.ticket});
+
+  @override
+  State<TicketScreen> createState() => _TicketScreenState();
+}
+
+class _TicketScreenState extends State<TicketScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Ticket"),
+        backgroundColor: HColors.backgroundColor,
+      ),
       backgroundColor: HColors.backgroundColor,
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-          const SizedBox(height: 40),
-          Text(
-            "Tickets",
-            style: HStyles.headLineStyle1.copyWith(fontSize: 35),
-          ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 40),
+          // Text(
+          //   "Tickets",
+          //   style: HStyles.headLineStyle1.copyWith(fontSize: 35),
+          // ),
+          // const SizedBox(height: 20),
           const AppTicketTabs(tabs: ["Upcoming", "Previous"]),
           const SizedBox(height: 10),
           Padding(
@@ -34,7 +44,7 @@ class TicketScreen extends StatelessWidget {
             child: Column(
               children: [
                 TicketCard(
-                  ticket: ticketList[0],
+                  ticket: widget.ticket ?? ticketList[0],
                   isColor: false,
                   isFullSize: true,
                 ),
@@ -161,7 +171,8 @@ class TicketScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                TicketCard(isFullSize: true, ticket: ticketList[0]),
+                TicketCard(
+                    isFullSize: true, ticket: widget.ticket ?? ticketList[0]),
               ],
             ),
           ),
