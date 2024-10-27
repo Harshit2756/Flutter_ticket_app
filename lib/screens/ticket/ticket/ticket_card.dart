@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_app/base/data/models/ticket_model.dart';
 import 'package:ticket_app/base/res/Theme/colors.dart';
 
-import '../../../../base/widgets/text/text_style_fourth.dart';
-import '../../../../base/widgets/text/text_style_third.dart';
+import '../../../base/widgets/text/text_style_fourth.dart';
+import '../../../base/widgets/text/text_style_third.dart';
 import 'app_layoutbuilder_widget.dart';
 import 'big_circle.dart';
 import 'big_dot.dart';
 
 class TicketCard extends StatelessWidget {
   final bool isFullSize, isColor;
-  final Map<String, dynamic> ticket;
+  final TicketModel ticket;
   const TicketCard({
     super.key,
     required this.ticket,
@@ -43,7 +44,7 @@ class TicketCard extends StatelessWidget {
                   Row(
                     children: [
                       TextStyleThird(
-                          text: ticket['from']['code'], isColor: isColor),
+                          text: ticket.from!.code!, isColor: isColor),
                       const Spacer(),
                       BigDot(isColor: isColor),
                       Expanded(
@@ -72,8 +73,7 @@ class TicketCard extends StatelessWidget {
                       ),
                       BigDot(isColor: isColor),
                       const Spacer(),
-                      TextStyleThird(
-                          text: ticket['to']['code'], isColor: isColor),
+                      TextStyleThird(text: ticket.to!.code!, isColor: isColor),
                     ],
                   ),
                   const SizedBox(height: 3),
@@ -83,16 +83,16 @@ class TicketCard extends StatelessWidget {
                       SizedBox(
                         width: 70,
                         child: TextStyleFourth(
-                            text: ticket['from']['name'], isColor: isColor),
+                            text: ticket.from!.name!, isColor: isColor),
                       ),
                       const Spacer(),
                       TextStyleFourth(
-                          text: ticket['flying_time'], isColor: isColor),
+                          text: ticket.flyingTime!, isColor: isColor),
                       const Spacer(),
                       SizedBox(
                         width: 70,
                         child: TextStyleFourth(
-                          text: ticket['to']['name'],
+                          text: ticket.to!.name!,
                           textAlign: TextAlign.end,
                           isColor: isColor,
                         ),
@@ -135,8 +135,7 @@ class TicketCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextStyleThird(
-                              text: ticket['date'], isColor: isColor),
+                          TextStyleThird(text: ticket.date!, isColor: isColor),
                           const SizedBox(height: 5),
                           TextStyleFourth(text: "Date", isColor: isColor),
                         ],
@@ -145,7 +144,7 @@ class TicketCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextStyleThird(
-                              text: ticket['departure_time'], isColor: isColor),
+                              text: ticket.departureTime!, isColor: isColor),
                           const SizedBox(height: 5),
                           TextStyleFourth(
                               text: "Departure Time", isColor: isColor),
@@ -155,8 +154,7 @@ class TicketCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextStyleThird(
-                              text: ticket['number'].toString(),
-                              isColor: isColor),
+                              text: ticket.number.toString(), isColor: isColor),
                           const SizedBox(height: 5),
                           TextStyleFourth(text: "Number", isColor: isColor),
                         ],

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_app/base/data/app_json.dart';
+import 'package:ticket_app/base/data/models/ticket_model.dart';
 import 'package:ticket_app/base/res/Theme/app_styles.dart';
 import 'package:ticket_app/base/res/Theme/colors.dart';
 import 'package:ticket_app/base/utils/Constants/icons.dart';
-import 'package:ticket_app/base/utils/app_json.dart';
 import 'package:ticket_app/base/utils/constants/images.dart';
 import 'package:ticket_app/base/widgets/section_heading.dart';
-import 'package:ticket_app/screens/home/widget/hotel/hotel_card.dart';
+import 'package:ticket_app/screens/hotel/widget/hotel_card.dart';
 
 import '../../base/res/routes/routes_name.dart';
-import 'widget/ticket/ticket_card.dart';
+import '../ticket/ticket/ticket_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -83,7 +84,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     children: ticketList
                         .take(3)
-                        .map((ticket) => TicketCard(ticket: ticket))
+                        .map(
+                          (ticket) => GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context,
+                                  arguments: {"ticket": ticket},
+                                  RoutesName.ticketScreen);
+                            },
+                            child: TicketCard(
+                              ticket: TicketModel.fromJson(ticket),
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
                 ),
@@ -98,7 +111,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     children: hotelList
                         .take(3)
-                        .map((hotel) => HotelCard(hotel: hotel))
+                        .map(
+                          (hotel) => GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context,
+                                  arguments: {"hotel": hotel},
+                                  RoutesName.hotelDetail);
+                            },
+                            child: HotelCard(hotel: hotel),
+                          ),
+                        )
                         .toList(),
                   ),
                 ),

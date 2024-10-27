@@ -1,17 +1,18 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/base/data/models/ticket_model.dart';
 import 'package:ticket_app/base/utils/constants/images.dart';
-import 'package:ticket_app/screens/home/widget/ticket/app_layoutbuilder_widget.dart';
-import 'package:ticket_app/screens/home/widget/ticket/ticket_card.dart';
+import 'package:ticket_app/screens/ticket/ticket/app_layoutbuilder_widget.dart';
+import 'package:ticket_app/screens/ticket/ticket/ticket_card.dart';
 
+import '../../base/data/app_json.dart';
 import '../../base/res/Theme/colors.dart';
-import '../../base/utils/app_json.dart';
 import '../../base/widgets/text/text_style_fourth.dart';
 import '../../base/widgets/text/text_style_third.dart';
 import '../search/widgets/app_ticket_tabs.dart';
 
 class TicketScreen extends StatefulWidget {
-  final Map<String, dynamic>? ticket;
+  final TicketModel? ticket;
 
   const TicketScreen({super.key, this.ticket});
 
@@ -44,7 +45,7 @@ class _TicketScreenState extends State<TicketScreen> {
             child: Column(
               children: [
                 TicketCard(
-                  ticket: widget.ticket ?? ticketList[0],
+                  ticket: widget.ticket ?? TicketModel.fromJson(ticketList[0]),
                   isColor: false,
                   isFullSize: true,
                 ),
@@ -172,7 +173,9 @@ class _TicketScreenState extends State<TicketScreen> {
                 ),
                 const SizedBox(height: 20),
                 TicketCard(
-                    isFullSize: true, ticket: widget.ticket ?? ticketList[0]),
+                  isFullSize: true,
+                  ticket: widget.ticket ?? TicketModel.fromJson(ticketList[0]),
+                ),
               ],
             ),
           ),

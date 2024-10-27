@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ticket_app/screens/home/widget/hotel/hotel_grid_view.dart';
+import 'package:ticket_app/base/data/models/hotel_model.dart';
+import 'package:ticket_app/screens/hotel/widget/hotel_grid_view.dart';
 
 import '../../base/res/Theme/colors.dart';
-import '../../base/utils/app_json.dart';
+import '../../base/data/app_json.dart';
 
 class AllHotels extends StatelessWidget {
+
   const AllHotels({super.key});
 
   @override
@@ -25,7 +27,7 @@ class AllHotels extends StatelessWidget {
         ),
         itemCount: hotelList.length,
         itemBuilder: (context, index) =>
-            HotelCardGridView(hotel: hotelList[index]),
+            HotelCardGridView(hotel: HotelModel.fromJson(hotelList[index])),
       ),
     );
   }

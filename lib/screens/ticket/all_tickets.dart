@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ticket_app/screens/home/widget/ticket/ticket_card.dart';
+import 'package:ticket_app/base/data/models/ticket_model.dart';
+import 'package:ticket_app/screens/ticket/ticket/ticket_card.dart';
 
+import '../../base/data/app_json.dart';
 import '../../base/res/routes/routes_name.dart';
-import '../../base/utils/app_json.dart';
 
 class AllTickets extends StatelessWidget {
   const AllTickets({super.key});
@@ -26,7 +27,8 @@ class AllTickets extends StatelessWidget {
                         arguments: {"ticket": ticket},
                         RoutesName.ticketScreen);
                   },
-                  child: TicketCard(ticket: ticket, isFullSize: true),
+                  child: TicketCard(
+                      ticket: TicketModel.fromJson(ticket), isFullSize: true),
                 ),
               ),
             )
