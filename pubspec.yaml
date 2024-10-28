@@ -11,10 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  device_preview: ^1.2.0
 
   cupertino_icons: ^1.0.8
   fluentui_icons: ^1.0.0
   barcode_widget: ^2.0.4
+
 
 dev_dependencies:
   flutter_test:
