@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'base/res/routes/routes.dart';
 import 'base/res/routes/routes_name.dart';
@@ -7,7 +8,6 @@ import 'base/res/routes/routes_name.dart';
 void main() {
   runApp(
     DevicePreview(
-      
       // White background looks professional in website embedding
       backgroundColor: Colors.white,
 
@@ -88,13 +88,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Ticket App',
       locale: DevicePreview.locale(context), // add this line
-      builder: DevicePreview.appBuilder,  // add this line
-       debugShowCheckedModeBanner: false,
+      builder: DevicePreview.appBuilder, // add this line
+      debugShowCheckedModeBanner: false,
       initialRoute: RoutesName.initial,
       onGenerateRoute: Routes.onGenerateRoute,
     );
   }
 }
+
+
+// flutter build web 
+// xcopy /E /H /Y build\web\* docs\
+

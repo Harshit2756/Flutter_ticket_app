@@ -16,7 +16,7 @@ class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.initial:
-        return MaterialPageRoute(builder: (_) => const BottomNavBar());
+        return MaterialPageRoute(builder: (_) => BottomNavBar());
       case RoutesName.homePage:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case RoutesName.allTickets:

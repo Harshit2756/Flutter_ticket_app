@@ -1,25 +1,24 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ReadMoreText extends StatefulWidget {
+import '../../../controller/text_expansion_controller.dart';
+
+class ReadMoreText extends StatelessWidget {
   final String text;
   final int trimLength;
 
   const ReadMoreText(this.text, {super.key, this.trimLength = 600});
 
   @override
-  _ReadMoreTextState createState() => _ReadMoreTextState();
-}
-
-class _ReadMoreTextState extends State<ReadMoreText> {
-  bool isExpanded = false;
-  @override
   Widget build(BuildContext context) {
-    final String displayText = isExpanded
-        ? widget.text
-        : widget.text.length > widget.trimLength
-            ? '${widget.text.substring(0, widget.trimLength)}...'
-            : widget.text;
+    final TextExpansionController controller =
+        Get.put(TextExpansionController());
+    final String displayText = controller.isExpanded.value
+        ? text
+        : text.length > trimLength
+            ? '${text.substring(0, trimLength)}...'
+            : text;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,26 +31,22 @@ class _ReadMoreTextState extends State<ReadMoreText> {
               color: Colors.black,
             ),
             children: <TextSpan>[
-              if (!isExpanded && widget.text.length > widget.trimLength)
+              if (!controller.isExpanded.value && text.length > trimLength)
                 TextSpan(
                   text: " Read More",
                   style: TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
+                      controller.toggleExpansion();
                     },
                 ),
             ],
           ),
         ),
-        if (isExpanded)
+        if (controller.isExpanded.value)
           GestureDetector(
             onTap: () {
-              setState(() {
-                isExpanded = !isExpanded;
-              });
+              controller.toggleExpansion();
             },
             child: Text(
               "Read Less",
