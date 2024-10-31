@@ -4,6 +4,7 @@ import 'package:ticket_app/base/utils/Constants/icons.dart';
 import 'package:ticket_app/screens/home/home_screen.dart';
 import 'package:ticket_app/screens/ticket/ticket_screen.dart';
 
+import '../screens/profile/profile.dart';
 import '../screens/search/search_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -18,7 +19,7 @@ class BottomNavBarState extends State<BottomNavBar> {
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
-    const Text('Profile'),
+    const ProfileScreen(),
   ];
   int _currentIndex = 0;
   @override

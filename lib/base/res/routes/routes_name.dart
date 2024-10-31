@@ -10,4 +10,6 @@ class RoutesName {
   static const allHotels = "/all_hotels";
 
   static const hotelDetail = "/hotel_detail";
+
+  static const profile = "/profile";
 }

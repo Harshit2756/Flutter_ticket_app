@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: AssetImage(HImages.logo),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 25),
