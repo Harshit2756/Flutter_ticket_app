@@ -1,0 +1,86 @@
+name: Flutter Web Preview Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.4'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Backup original main.dart
+        run: cp lib/main.dart lib/main.dart.backup
+
+      - name: Update main.dart for web build
+        run: |
+          cat > lib/main.dart << 'EOL'
+          import 'package:flutter/material.dart';
+          import 'package:device_preview/device_preview.dart';
+
+          void main() {
+            runApp(
+              DevicePreview(
+                backgroundColor: Colors.white,
+                enabled: true,
+                defaultDevice: Devices.ios.iPhone13ProMax,
+                isToolbarVisible: true,
+                availableLocales: [Locale('en', 'US')],
+                tools: const [
+                  DeviceSection(
+                    model: true,
+                    orientation: false,
+                    frameVisibility: false,
+                    virtualKeyboard: false,
+                  ),
+                ],
+                devices: [
+                  Devices.android.samsungGalaxyA50,
+                  Devices.android.samsungGalaxyNote20,
+                  Devices.android.samsungGalaxyS20,
+                  Devices.android.samsungGalaxyNote20Ultra,
+                  Devices.android.onePlus8Pro,
+                  Devices.android.sonyXperia1II,
+                  Devices.ios.iPhoneSE,
+                  Devices.ios.iPhone12,
+                  Devices.ios.iPhone12Mini,
+                  Devices.ios.iPhone12ProMax,
+                  Devices.ios.iPhone13,
+                  Devices.ios.iPhone13ProMax,
+                  Devices.ios.iPhone13Mini,
+                  Devices.ios.iPhoneSE,
+                ],
+                builder: (context) => const MyApp(),
+              ),
+            );
+          }
+          EOL
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Restore original main.dart
+        run: mv lib/main.dart.backup lib/main.dart
+
+      - name: Copy build files to docs
+        run: |
+          xcopy /E /H /Y build\web\* docs\
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs
+          git commit -m "Update web build" || echo "No changes to commit"
+          git push
