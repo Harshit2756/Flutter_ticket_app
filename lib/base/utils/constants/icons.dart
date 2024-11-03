@@ -10,7 +10,7 @@ class HIcons {
   static const IconData searchIconRegular =
       FluentSystemIcons.ic_fluent_search_regular;
   static const IconData searchIconFilled =
-      FluentSystemIcons.ic_fluent_search_filled;
+      FluentSystemIcons.ic_fluent_search_info_filled;
 
   static const IconData ticketIconRegular =
       FluentSystemIcons.ic_fluent_ticket_regular;
