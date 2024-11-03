@@ -63,7 +63,6 @@ void main() {
         Devices.ios.iPhoneSE, // Budget option
       ],
 
-      /// Your app's entry point
       builder: (context) => const MyApp(),
     ),
   );
