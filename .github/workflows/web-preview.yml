@@ -87,7 +87,9 @@ jobs:
 
       - name: Copy build files to docs
         run: |
-          xcopy /E /H /Y build\web\* docs\
+          rm -rf docs
+          mkdir -p docs
+          cp -r build/web/. docs/
 
       - name: Commit and push changes
         run: |
