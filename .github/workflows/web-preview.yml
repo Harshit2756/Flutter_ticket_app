@@ -78,7 +78,7 @@ jobs:
           sed -i 's/MaterialApp(/MaterialApp(\n        locale: DevicePreview.locale(context),\n        builder: DevicePreview.appBuilder,/g' lib/app.dart
 
       - name: Build Web
-        run: flutter build web --base-href "/your-repo-name/"
+        run: flutter build web
 
       - name: Restore original files
         run: |
