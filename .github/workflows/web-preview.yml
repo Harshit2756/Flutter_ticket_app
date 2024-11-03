@@ -2,7 +2,7 @@ name: Flutter Web Preview Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -14,19 +14,22 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.4'
-          channel: 'stable'
+          flutter-version: "3.24.4"
+          channel: "stable"
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Backup original main.dart
-        run: cp lib/main.dart lib/main.dart.backup
+      - name: Backup original files
+        run: |
+          cp lib/main.dart lib/main.dart.bak
+          cp lib/app.dart lib/app.dart.bak
 
       - name: Update main.dart for web build
         run: |
           cat > lib/main.dart << 'EOL'
           import 'package:flutter/material.dart';
+          import 'package:ticket_app/app.dart';
           import 'package:device_preview/device_preview.dart';
 
           void main() {
@@ -67,11 +70,20 @@ jobs:
           }
           EOL
 
-      - name: Build Web
-        run: flutter build web
+      - name: Update app.dart for web build
+        run: |
+          # First add the import at the top of the file
+          sed -i '1i import '"'"'package:device_preview/device_preview.dart'"'"';' lib/app.dart
+          # Then add the MaterialApp properties
+          sed -i 's/MaterialApp(/MaterialApp(\n        locale: DevicePreview.locale(context),\n        builder: DevicePreview.appBuilder,/g' lib/app.dart
 
-      - name: Restore original main.dart
-        run: mv lib/main.dart.backup lib/main.dart
+      - name: Build Web
+        run: flutter build web --base-href "/your-repo-name/"
+
+      - name: Restore original files
+        run: |
+          mv lib/main.dart.bak lib/main.dart
+          mv lib/app.dart.bak lib/app.dart
 
       - name: Copy build files to docs
         run: |
