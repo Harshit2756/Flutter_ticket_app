@@ -4,7 +4,7 @@ import 'package:ticket_app/screens/search/widgets/ticket_promotion.dart';
 import '../../base/res/Theme/app_styles.dart';
 import '../../base/res/Theme/colors.dart';
 import '../../base/res/routes/routes_name.dart';
-import '../../base/utils/Constants/icons.dart';
+import '../../base/utils/constants/icons.dart';
 import '../../base/widgets/section_heading.dart';
 import 'widgets/app_ticket_tabs.dart';
 
