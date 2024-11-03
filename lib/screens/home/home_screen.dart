@@ -3,13 +3,13 @@ import 'package:ticket_app/base/data/app_json.dart';
 import 'package:ticket_app/base/data/models/ticket_model.dart';
 import 'package:ticket_app/base/res/Theme/app_styles.dart';
 import 'package:ticket_app/base/res/Theme/colors.dart';
+import 'package:ticket_app/base/res/routes/routes_name.dart';
 import 'package:ticket_app/base/utils/Constants/icons.dart';
 import 'package:ticket_app/base/utils/constants/images.dart';
 import 'package:ticket_app/base/widgets/section_heading.dart';
 import 'package:ticket_app/screens/hotel/widget/hotel_card.dart';
+import 'package:ticket_app/screens/ticket/ticket/ticket_card.dart';
 
-import '../../base/res/routes/routes_name.dart';
-import '../ticket/ticket/ticket_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
